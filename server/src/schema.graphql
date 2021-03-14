@@ -29,3 +29,7 @@ type Link {
   url: String!
   postedBy: User
 }
+
+type Subscription {
+  newLink: Link
+}
