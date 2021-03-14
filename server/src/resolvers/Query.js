@@ -1,4 +1,4 @@
-async function feed(parent, args, context) {
+async function feed(parent, args, context, info) {
   const where = args.filter
     ? {
         OR: [
@@ -17,7 +17,11 @@ async function feed(parent, args, context) {
 
   const count = await context.prisma.link.count({ where });
 
-  return { links, count };
+  return {
+    id: "main-feed",
+    links,
+    count,
+  };
 }
 
 module.exports = {
